@@ -89,7 +89,7 @@ syntax keyword javaScriptType           const undefined var void yield
 syntax keyword javaScriptOperator       delete new in instanceof let typeof
 syntax keyword javaScriptBoolean        true false
 syntax keyword javaScriptNull           null
-syntax keyword javaScriptThis           this
+syntax keyword javaScriptThis           this self
 
 "" Statement Keywords
 syntax keyword javaScriptConditional    if else
@@ -151,9 +151,46 @@ endif "DOM/HTML/CSS
 
 "" end DOM/HTML/CSS specified things
 
+" node.js
+syntax keyword javaScriptNodeGlobals     global console process require module exports
+
+" jQuery
+syntax match   jQuery          /jQuery\|\$/
+syntax match   jFunc           /\.\w\+(\@=/ contains=@jFunctions
+
+syntax cluster jFunctions      contains=jAjax,jAttributes,jCore,jCSS,jData,jDeferred,jDimensions,jEffects,jEvents,jManipulation,jMiscellaneous,jOffset,jProperties,jTraversing,jUtilities
+syntax keyword jAjax           contained ajaxComplete ajaxError ajaxSend ajaxStart ajaxStop ajaxSuccess
+syntax keyword jAjax           contained param serialize serializeArray
+syntax keyword jAjax           contained ajax ajaxPrefilter ajaxSetup ajaxSettings ajaxTransport
+syntax keyword jAjax           contained get getJSON getScript load post
+syntax keyword jAttributes     contained addClass attr hasClass prop removeAttr removeClass removeProp toggleClass val
+syntax keyword jCore           contained holdReady noConflict sub when
+syntax keyword jCSS            contained css cssHooks
+syntax keyword jData           contained clearQueue data dequeue hasData queue removeData
+syntax keyword jDeferred       contained Deferred always done fail isRejected isResolved pipe promise reject rejectWith resolved resolveWith then
+syntax keyword jDimensions     contained height innerHeight innerWidth outerHeight outerWidth width
+syntax keyword jEffects        contained hide show toggle
+syntax keyword jEffects        contained animate delay stop
+syntax keyword jEffects        contained fadeIn fadeOut fadeTo fadeToggle
+syntax keyword jEffects        contained slideDown slideToggle slideUp
+syntax keyword jEvents         contained error resize scroll ready unload bind delegate die live one proxy trigger triggerHandler unbind undelegate Event currentTarget isDefaultPrevented isImmediatePropagationStopped isPropagationStopped namespace pageX pageY preventDefault relatedTarget result stopImmediatePropagation stopPropagation target timeStamp which blur change focus select submit focusin focusout keydown keypress keyup click dblclick hover mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup
+syntax keyword jManipulation   contained clone
+syntax keyword jManipulation   contained unwrap wrap wrapAll wrapInner
+syntax keyword jManipulation   contained append appendTo html preprend prependTo text
+syntax keyword jManipulation   contained after before insertAfter insertBefore
+syntax keyword jManipulation   contained detach empty remove
+syntax keyword jManipulation   contained replaceAll replaceWith
+syntax keyword jMiscellaneous  contained index size toArray
+syntax keyword jOffset         contained offset offsetParent position scrollTop scrollLeft
+syntax keyword jProperties     contained browser context fx.interval fx.off length selector support
+syntax keyword jTraversing     contained eq filter first has is last map not slice
+syntax keyword jTraversing     contained add andSelf contents end
+syntax keyword jTraversing     contained children closest find next nextAll nextUntil parent parents parentsUntil prev prevAll prevUntil siblings
+syntax keyword jUtilities      contained each extend globalEval grep inArray isArray isEmptyObject isFunction isPlainObject isWindow isXMLDoc makeArray merge noop now parseJSON parseXML trim type unique
+
 
 "" Code blocks
-syntax cluster javaScriptAll       contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptThis,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation
+syntax cluster javaScriptAll       contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptThis,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation,javaScriptNodeGlobals,jQuery,jAjax,jAttributes,jCore,jCSS,jData,jDeferred,jDimensions,jEffects,jEvents,jManipulation,jMiscellaneous,jOffset,jProperties,jTraversing,jUtilities
 syntax region  javaScriptBracket   matchgroup=javaScriptBracket transparent start="\[" end="\]" contains=@javaScriptAll,javaScriptParensErrB,javaScriptParensErrC,javaScriptBracket,javaScriptParen,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptParen     matchgroup=javaScriptParen   transparent start="("  end=")"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrC,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptBlock     matchgroup=javaScriptBlock   transparent start="{"  end="}"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc 
@@ -240,6 +277,27 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptHtmlElemFuncs        PreProc
 
   HiLink javaScriptCssStyles            Label
+
+  " Node.js
+  HiLink javaScriptNodeGlobals          Function
+
+  " jQuery
+  "HiLink jQuery                         Constant
+  "HiLink jAjax                          Function
+  "HiLink jAttributes                    Function
+  "HiLink jCore                          Function
+  "HiLink jCSS                           Function
+  "HiLink jData                          Function
+  "HiLink jDeferred                      Function
+  "HiLink jDimensions                    Function
+  "HiLink jEffects                       Function
+  "HiLink jEvents                        Function
+  "HiLink jManipulation                  Function
+  "HiLink jMiscellaneous                 Function
+  "HiLink jOffset                        Function
+  "HiLink jProperties                    Function
+  "HiLink jTraversing                    Function
+  "HiLink jUtilities                     Function
 
   delcommand HiLink
 endif
