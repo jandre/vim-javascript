@@ -135,7 +135,7 @@ syntax keyword jCore           contained holdReady noConflict sub when
 syntax keyword jCSS            contained css cssHooks
 syntax keyword jData           contained clearQueue data dequeue hasData queue removeData
 syntax keyword jDeferred       contained Deferred always done fail isRejected isResolved pipe promise reject rejectWith resolved resolveWith then
-syntax keyword jDimensions     contained .height innerHeight innerWidth outerHeight outerWidth .width
+syntax keyword jDimensions     contained height innerHeight innerWidth outerHeight outerWidth width
 syntax keyword jEffects        contained hide show toggle
 syntax keyword jEffects        contained animate delay stop
 syntax keyword jEffects        contained fadeIn fadeOut fadeTo fadeToggle
@@ -284,22 +284,22 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptNodeGlobals          Function
 
   " jQuery
-  HiLink jQuery                         Constant
-  HiLink jAjax                          Function
-  HiLink jAttributes                    Function
-  HiLink jCore                          Function
-  HiLink jCSS                           Function
-  HiLink jData                          Function
-  HiLink jDeferred                      Function
-  HiLink jDimensions                    Function
-  HiLink jEffects                       Function
-  HiLink jEvents                        Function
-  HiLink jManipulation                  Function
-  HiLink jMiscellaneous                 Function
-  HiLink jOffset                        Function
-  HiLink jProperties                    Function
-  HiLink jTraversing                    Function
-  HiLink jUtilities                     Function
+  "HiLink jQuery                         Constant
+  "HiLink jAjax                          Function
+  "HiLink jAttributes                    Function
+  "HiLink jCore                          Function
+  "HiLink jCSS                           Function
+  "HiLink jData                          Function
+  "HiLink jDeferred                      Function
+  "HiLink jDimensions                    Function
+  "HiLink jEffects                       Function
+  "HiLink jEvents                        Function
+  "HiLink jManipulation                  Function
+  "HiLink jMiscellaneous                 Function
+  "HiLink jOffset                        Function
+  "HiLink jProperties                    Function
+  "HiLink jTraversing                    Function
+  "HiLink jUtilities                     Function
 
   delcommand HiLink
 endif
