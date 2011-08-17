@@ -85,11 +85,11 @@ syntax keyword javaScriptPrototype      prototype
 
 "" Programm Keywords
 syntax keyword javaScriptSource         import export
-syntax keyword javaScriptType           const undefined var void yield 
+syntax keyword javaScriptType           const undefined var void yield callee
 syntax keyword javaScriptOperator       delete new in instanceof let typeof
 syntax keyword javaScriptBoolean        true false
 syntax keyword javaScriptNull           null
-syntax keyword javaScriptThis           this self
+syntax keyword javaScriptThis           this self that
 
 "" Statement Keywords
 syntax keyword javaScriptConditional    if else
@@ -106,7 +106,7 @@ syntax keyword javaScriptFutureKeys     abstract enum int short boolean export i
 "" DOM/HTML/CSS specified things
 
 " DOM2 Objects
-syntax keyword javaScriptGlobalObjects  DOMImplementation DocumentFragment Document Node NodeList NamedNodeMap CharacterData Attr Element Text Comment CDATASection DocumentType Notation Entity EntityReference ProcessingInstruction
+syntax keyword javaScriptGlobalObjects  DOMImplementation DocumentFragment Document Node NodeList NamedNodeMap CharacterData Attr Element Text Comment CDATASection DocumentType Notation Entity EntityReference ProcessingInstruction setTimeout setInterval
 syntax keyword javaScriptExceptions     DOMException
 
 " DOM2 CONSTANT
