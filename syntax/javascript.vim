@@ -126,7 +126,6 @@ syntax keyword javaScriptNodeGlobals     global console process require module e
 syntax match   jQuery          /jQuery\|\$/
 syntax match   jFunc           /\.\w\+(\@=/ contains=@jFunctions
 
-syntax cluster jFunctions      contains=jAjax,jAttributes,jCore,jCSS,jData,jDeferred,jDimensions,jEffects,jEvents,jManipulation,jMiscellaneous,jOffset,jProperties,jTraversing,jUtilities
 syntax keyword jAjax           contained ajaxComplete ajaxError ajaxSend ajaxStart ajaxStop ajaxSuccess
 syntax keyword jAjax           contained param serialize serializeArray
 syntax keyword jAjax           contained ajax ajaxPrefilter ajaxSetup ajaxSettings ajaxTransport
@@ -136,7 +135,7 @@ syntax keyword jCore           contained holdReady noConflict sub when
 syntax keyword jCSS            contained css cssHooks
 syntax keyword jData           contained clearQueue data dequeue hasData queue removeData
 syntax keyword jDeferred       contained Deferred always done fail isRejected isResolved pipe promise reject rejectWith resolved resolveWith then
-syntax keyword jDimensions     contained height innerHeight innerWidth outerHeight outerWidth width
+syntax keyword jDimensions     contained .height innerHeight innerWidth outerHeight outerWidth .width
 syntax keyword jEffects        contained hide show toggle
 syntax keyword jEffects        contained animate delay stop
 syntax keyword jEffects        contained fadeIn fadeOut fadeTo fadeToggle
@@ -155,6 +154,8 @@ syntax keyword jTraversing     contained eq filter first has is last map not sli
 syntax keyword jTraversing     contained add andSelf contents end
 syntax keyword jTraversing     contained children closest find next nextAll nextUntil parent parents parentsUntil prev prevAll prevUntil siblings
 syntax keyword jUtilities      contained each extend globalEval grep inArray isArray isEmptyObject isFunction isPlainObject isWindow isXMLDoc makeArray merge noop now parseJSON parseXML trim type unique
+
+syntax cluster jFunctions      contains=jAjax,jAttributes,jCore,jCSS,jData,jDeferred,jDimensions,jEffects,jEvents,jManipulation,jMiscellaneous,jOffset,jProperties,jTraversing,jUtilities
 
 " Follow stuff should be highligh within a special context
 " While it can't be handled with context depended with Regex based highlight
