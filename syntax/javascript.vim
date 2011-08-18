@@ -293,22 +293,22 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptNodeGlobals          Special
 
   " jQuery
-  "HiLink jQuery                         Constant
-  "HiLink jAjax                          Function
-  "HiLink jAttributes                    Function
-  "HiLink jCore                          Function
-  "HiLink jCSS                           Function
-  "HiLink jData                          Function
-  "HiLink jDeferred                      Function
-  "HiLink jDimensions                    Function
-  "HiLink jEffects                       Function
-  "HiLink jEvents                        Function
-  "HiLink jManipulation                  Function
-  "HiLink jMiscellaneous                 Function
-  "HiLink jOffset                        Function
-  "HiLink jProperties                    Function
-  "HiLink jTraversing                    Function
-  "HiLink jUtilities                     Function
+  HiLink jQuery                         Constant
+  HiLink jAjax                          Function
+  HiLink jAttributes                    Function
+  HiLink jCore                          Function
+  HiLink jCSS                           Function
+  HiLink jData                          Function
+  HiLink jDeferred                      Function
+  HiLink jDimensions                    Function
+  HiLink jEffects                       Function
+  HiLink jEvents                        Function
+  HiLink jManipulation                  Function
+  HiLink jMiscellaneous                 Function
+  HiLink jOffset                        Function
+  HiLink jProperties                    Function
+  HiLink jTraversing                    Function
+  HiLink jUtilities                     Function
 
   delcommand HiLink
 endif
