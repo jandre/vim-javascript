@@ -118,9 +118,8 @@ syntax case ignore
 syntax keyword javaScriptHtmlEvents     onblur onclick oncontextmenu ondblclick onfocus onkeydown onkeypress onkeyup onmousedown onmousemove onmouseout onmouseover onmouseup onresize
 syntax case match
 
-
 " node.js
-syntax keyword javaScriptNodeGlobals     global console process require module exports
+syntax keyword javaScriptNodeGlobals  Buffer GLOBAL clearInterval clearTimeout console exports global module process require root setInterval setTimeout __dirname __filename
 
 " jQuery
 syntax match   jQuery          /jQuery\|\$/
@@ -208,11 +207,21 @@ if main_syntax == "javascript"
   syntax sync match javaScriptHighlight grouphere javaScriptBlock /{/
 endif
 
+
+" TEST
+syntax match   javaScriptFunction       /\<\(function\)\>/ nextgroup=javaScriptFuncName,javaScriptFuncArguments skipwhite
+" syntax match   javaScriptOpAssign       contained /=\@<!=/ nextgroup=javaScriptFuncName skipwhite skipempty
+syntax match   javaScriptFuncName       contained "\w\+" nextgroup=javaScriptFuncArguments skipwhite
+syntax region  javaScriptFuncArguments  start=/(/ end=/)/ contains=@javaScriptAll,javaScriptLineComment,javaScriptComment nextgroup=javaScriptFuncBlock skipwhite skipempty
+syntax region  javaScriptFuncBlock      contained matchgroup=javaScriptFuncBlock start="{" end="}" contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock fold
+
+
 "" Fold control
 if exists("b:javascript_fold")
-    syntax match   javaScriptFunction       /\<function\>/ nextgroup=javaScriptFuncName skipwhite
-    syntax match   javaScriptOpAssign       /=\@<!=/ nextgroup=javaScriptFuncBlock skipwhite skipempty
-    syntax region  javaScriptFuncName       contained matchgroup=javaScriptFuncName start=/\%(\$\|\w\)*\s*(/ end=/)/ contains=javaScriptLineComment,javaScriptComment nextgroup=javaScriptFuncBlock skipwhite skipempty
+    syntax match   javaScriptFunction       /\<\(function\)\>/ nextgroup=javaScriptFuncName,javaScriptFuncArguments skipwhite
+    " syntax match   javaScriptOpAssign       contained /=\@<!=/ nextgroup=javaScriptFuncName skipwhite skipempty
+    syntax match   javaScriptFuncName       contained "\w\+" nextgroup=javaScriptFuncArguments skipwhite
+    syntax region  javaScriptFuncArguments  start=/(/ end=/)/ contains=@javaScriptAll,javaScriptLineComment,javaScriptComment nextgroup=javaScriptFuncBlock skipwhite skipempty
     syntax region  javaScriptFuncBlock      contained matchgroup=javaScriptFuncBlock start="{" end="}" contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock fold
 else
     syntax keyword javaScriptFunction       function
@@ -281,7 +290,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptCssStyles            Label
 
   " Node.js
-  HiLink javaScriptNodeGlobals          Function
+  HiLink javaScriptNodeGlobals          Special
 
   " jQuery
   "HiLink jQuery                         Constant
