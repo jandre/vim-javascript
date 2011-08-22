@@ -212,7 +212,7 @@ endif
 syntax match   javaScriptFunction       /\<\(function\)\>/ nextgroup=javaScriptFuncName,javaScriptFuncArguments skipwhite
 " syntax match   javaScriptOpAssign       contained /=\@<!=/ nextgroup=javaScriptFuncName skipwhite skipempty
 syntax match   javaScriptFuncName       contained "\w\+" nextgroup=javaScriptFuncArguments skipwhite
-syntax region  javaScriptFuncArguments  start=/(/ end=/)/ contains=@javaScriptAll,javaScriptLineComment,javaScriptComment nextgroup=javaScriptFuncBlock skipwhite skipempty
+syntax region  javaScriptFuncArguments  start=/(/ skip=/,/ end=/)/ contains=@javaScriptAll,javaScriptLineComment,javaScriptComment nextgroup=javaScriptFuncBlock skipwhite skipempty
 syntax region  javaScriptFuncBlock      contained matchgroup=javaScriptFuncBlock start="{" end="}" contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock fold
 
 
@@ -261,8 +261,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptStatement            Statement
 
   HiLink javaScriptFunction             Function
-  HiLink javaScriptFuncArguments        Type
-  HiLink javaScriptFuncName             Function
+  HiLink javaScriptFuncArguments        Special
+  HiLink javaScriptFuncName             Constant
 
   HiLink javaScriptError                Error
   HiLink javaScriptParensError          Error
