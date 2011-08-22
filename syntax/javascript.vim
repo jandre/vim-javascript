@@ -123,7 +123,7 @@ syntax case match
 syntax keyword javaScriptNodeGlobals  Buffer GLOBAL clearInterval clearTimeout console exports global module process require root setInterval setTimeout __dirname __filename
 
 " jQuery
-syntax match   jQuery          /jQuery\|\$/
+syntax match jQuery          /\.\@<!\(\$\|jQuery\)\((\|.\)\@=/
 
 " Follow stuff should be highligh within a special context
 " While it can't be handled with context depended with Regex based highlight
