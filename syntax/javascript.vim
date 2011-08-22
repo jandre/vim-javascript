@@ -261,7 +261,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptStatement            Statement
 
   HiLink javaScriptFunction             Function
-  HiLink javaScriptFuncArguments        Special
+  " HiLink javaScriptFuncArguments        Special
   HiLink javaScriptFuncName             Constant
 
   HiLink javaScriptError                Error
@@ -294,7 +294,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptCssStyles            Label
 
   " Node.js
-  HiLink javaScriptNodeGlobals          Special
+  HiLink javaScriptNodeGlobals          Constant
 
   " jQuery
   HiLink jQuery                         Constant
