@@ -90,7 +90,7 @@ syntax keyword javaScriptType           const undefined var void yield callee
 syntax keyword javaScriptOperator       delete new in instanceof let typeof
 syntax keyword javaScriptBoolean        true false
 syntax keyword javaScriptNull           null
-syntax keyword javaScriptThis           this self that
+syntax keyword javaScriptThis           this
 
 "" Statement Keywords
 syntax keyword javaScriptConditional    if else
@@ -124,6 +124,7 @@ syntax keyword javaScriptNodeGlobals  Buffer GLOBAL clearInterval clearTimeout c
 
 " jQuery
 syntax match jQuery          /\.\@<!\(\$\|jQuery\)\((\|.\)\@=/
+syntax match selfANDthat     /self\|that\(\.\|(\)\@=/
 
 " Follow stuff should be highligh within a special context
 " While it can't be handled with context depended with Regex based highlight
@@ -159,7 +160,7 @@ endif "DOM/HTML/CSS
 "" end DOM/HTML/CSS specified things
 
 "" Code blocks
-syntax cluster javaScriptAll       contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptThis,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation,javaScriptNodeGlobals,javaScriptFunctionCall,jQuery
+syntax cluster javaScriptAll       contains=javaScriptComment,javaScriptLineComment,javaScriptDocComment,javaScriptStringD,javaScriptStringS,javaScriptRegexpString,javaScriptNumber,javaScriptFloat,javaScriptLabel,javaScriptSource,javaScriptThis,javaScriptType,javaScriptOperator,javaScriptBoolean,javaScriptNull,javaScriptFunction,javaScriptConditional,javaScriptRepeat,javaScriptBranch,javaScriptStatement,javaScriptGlobalObjects,javaScriptExceptions,javaScriptFutureKeys,javaScriptDomErrNo,javaScriptDomNodeConsts,javaScriptHtmlEvents,javaScriptDotNotation,javaScriptNodeGlobals,javaScriptFunctionCall,jQuery,selfANDthat
 syntax region  javaScriptBracket   matchgroup=javaScriptBracket transparent start="\[" end="\]" contains=@javaScriptAll,javaScriptParensErrB,javaScriptParensErrC,javaScriptBracket,javaScriptParen,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptParen     matchgroup=javaScriptParen   transparent start="("  end=")"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrC,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc
 syntax region  javaScriptBlock     matchgroup=javaScriptBlock   transparent start="{"  end="}"  contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock,@htmlPreproc 
@@ -268,6 +269,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   " jQuery
   HiLink jQuery                         Constant
   HiLink javaScriptFunctionCall         Constant
+  HiLink selfANDthat                    Type
 
   delcommand HiLink
 endif
