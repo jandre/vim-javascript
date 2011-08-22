@@ -124,7 +124,7 @@ syntax keyword javaScriptNodeGlobals  Buffer GLOBAL clearInterval clearTimeout c
 
 " jQuery
 syntax match jQuery          /\.\@<!\(\$\|jQuery\)\((\|.\)\@=/
-syntax match selfANDthat     /self\|that\(\.\|(\)\@=/
+syntax match selfANDthat     /\(self\|that\)\(\.\|(\)\@=/
 
 " Follow stuff should be highligh within a special context
 " While it can't be handled with context depended with Regex based highlight
