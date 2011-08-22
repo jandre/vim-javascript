@@ -259,7 +259,11 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptBranch               Conditional
   HiLink javaScriptRepeat               Repeat
   HiLink javaScriptStatement            Statement
+
   HiLink javaScriptFunction             Function
+  HiLink javaScriptFuncArguments        Type
+  HiLink javaScriptFuncName             Function
+
   HiLink javaScriptError                Error
   HiLink javaScriptParensError          Error
   HiLink javaScriptParensErrA           Error
