@@ -88,6 +88,7 @@ syntax keyword javaScriptPrototype      prototype
 syntax keyword javaScriptSource         import export
 syntax keyword javaScriptType           const undefined var void yield callee
 syntax keyword javaScriptOperator       delete new in instanceof let typeof
+syntax keyword javaScriptStatics        Anchor Applet Area Array Boolean Button Checkbox Date document event FileUpload Form Frame Function Hidden History Image JavaArray JavaClass JavaObject JavaPackage java Layer Link Location Math MimeType Number navigator netscape Object Option Packages Password Plugin Radio RegExp Reset Select String Style Submit screen sun Text Textarea window XMLHttpRequest id getElement getElements body html options href indexOf hash forEach location
 syntax keyword javaScriptBoolean        true false
 syntax keyword javaScriptNull           null
 syntax keyword javaScriptThis           this
@@ -171,12 +172,14 @@ syntax match   javaScriptParensErrA     contained "\]"
 syntax match   javaScriptParensErrB     contained ")"
 syntax match   javaScriptParensErrC     contained "}"
 
+" Amadeus Custom
+syntax match javaScriptParenths         /[()]/
+
 if main_syntax == "javascript"
   syntax sync clear
   syntax sync ccomment javaScriptComment minlines=200
   syntax sync match javaScriptHighlight grouphere javaScriptBlock /{/
 endif
-
 
 " TEST
 syntax match   javaScriptFunction       /\<\(function\)\>/ nextgroup=javaScriptFuncName,javaScriptFuncArguments skipwhite
@@ -185,17 +188,16 @@ syntax match   javaScriptFuncName       contained "\w\+" nextgroup=javaScriptFun
 syntax region  javaScriptFuncArguments  start=/(/ skip=/,/ end=/)/ contains=@javaScriptAll,javaScriptLineComment,javaScriptComment nextgroup=javaScriptFuncBlock skipwhite skipempty
 syntax region  javaScriptFuncBlock      contained matchgroup=javaScriptFuncBlock start="{" end="}" contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock fold
 
-
 "" Fold control
-if exists("b:javascript_fold")
-    syntax match   javaScriptFunction       /\<\(function\)\>/ nextgroup=javaScriptFuncName,javaScriptFuncArguments skipwhite
-    " syntax match   javaScriptOpAssign       contained /=\@<!=/ nextgroup=javaScriptFuncName skipwhite skipempty
-    syntax match   javaScriptFuncName       contained "\w\+" nextgroup=javaScriptFuncArguments skipwhite
-    syntax region  javaScriptFuncArguments  start=/(/ end=/)/ contains=@javaScriptAll,javaScriptLineComment,javaScriptComment nextgroup=javaScriptFuncBlock skipwhite skipempty
-    syntax region  javaScriptFuncBlock      contained matchgroup=javaScriptFuncBlock start="{" end="}" contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock fold
-else
-    syntax keyword javaScriptFunction       function
-endif
+"if exists("b:javascript_fold")
+    "syntax match   javaScriptFunction       /\<\(function\)\>/ nextgroup=javaScriptFuncName,javaScriptFuncArguments skipwhite
+    "" syntax match   javaScriptOpAssign       contained /=\@<!=/ nextgroup=javaScriptFuncName skipwhite skipempty
+    "syntax match   javaScriptFuncName       contained "\w\+" nextgroup=javaScriptFuncArguments skipwhite
+    "syntax region  javaScriptFuncArguments  start=/(/ end=/)/ contains=@javaScriptAll,javaScriptLineComment,javaScriptComment nextgroup=javaScriptFuncBlock skipwhite skipempty
+    "syntax region  javaScriptFuncBlock      contained matchgroup=javaScriptFuncBlock start="{" end="}" contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock fold
+"else
+    "syntax keyword javaScriptFunction       function
+"endif
 
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
@@ -270,6 +272,10 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jQuery                         Constant
   HiLink javaScriptFunctionCall         Constant
   HiLink selfANDthat                    Type
+
+  HiLink javaScriptParenths             jsParenths
+  HiLink javaScriptStatics              jsStatics
+  HiLink javaScriptNull                 jsNull
 
   delcommand HiLink
 endif
