@@ -189,7 +189,17 @@ syntax region  javaScriptFuncArguments  start=/(/ skip=/,/ end=/)/ contains=@jav
 syntax region  javaScriptFuncBlock      contained matchgroup=javaScriptFuncBlock start="{" end="}" contains=@javaScriptAll,javaScriptParensErrA,javaScriptParensErrB,javaScriptParen,javaScriptBracket,javaScriptBlock fold
 
 "" Fold control
-"if exists("b:javascript_fold")
+if exists("b:javascript_fold")
+    setlocal foldmethod=syntax
+    setlocal foldlevelstart=0
+    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+    function! FoldText()
+        return substitute(getline(v:foldstart), '{.*', '{...}', '') 
+    endfunction
+    setlocal foldtext=FoldText()
+endif
+
     "syntax match   javaScriptFunction       /\<\(function\)\>/ nextgroup=javaScriptFuncName,javaScriptFuncArguments skipwhite
     "" syntax match   javaScriptOpAssign       contained /=\@<!=/ nextgroup=javaScriptFuncName skipwhite skipempty
     "syntax match   javaScriptFuncName       contained "\w\+" nextgroup=javaScriptFuncArguments skipwhite
