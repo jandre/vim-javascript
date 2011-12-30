@@ -29,6 +29,11 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
+
+set sw=4
+set ts=4
+set sts=4
+
 " 1. Variables {{{1
 " ============
 
